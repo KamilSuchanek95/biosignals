@@ -1,0 +1,10 @@
+<h1> Strona domowa serwisu Biosignals </h1><br><br>
+
+<h3>Linki użytkowników:</h3><br>
+
+<%- unless user_signed_in? %>
+  <%= link_to "Log in", new_user_session_path %><br />
+  <%= link_to "Sign up", new_user_registration_path %><br />
+<% end %>
+
+

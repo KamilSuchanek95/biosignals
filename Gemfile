@@ -19,6 +19,9 @@ gem 'webpacker', '~> 6.0.0.pre.2'
 # Database
 gem 'mongoid', '~>7.0.5'
 
+# devise
+gem 'devise'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
