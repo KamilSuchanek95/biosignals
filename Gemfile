@@ -18,7 +18,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'webpacker', '~> 6.0.0.pre.2'
 # Database
 gem 'mongoid', '~>7.0.5'
-
+gem 'pry'
 # devise
 gem 'devise'
 

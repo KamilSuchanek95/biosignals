@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :measurements
   root to: 'home#index'
   resources :home
   Rails.application.routes.draw do
+  resources :measurements
     devise_for :users, controllers: {
       sessions: 'users/sessions'
     }
