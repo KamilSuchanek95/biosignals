@@ -22,13 +22,7 @@ class MeasurementsController < ApplicationController
 
   # POST /measurements or /measurements.json
   def create
-    m_para = measurement_params
-    m_para[:user_id] = current_user.id
-    # separated by commas / spaces / newlines 
-      # and remove the "" excess element at the beginning of the array 
-        # -> occurs when we have a few whitespace at the beginning.
-    m_para[:data] = m_para[:data].split(/[, \n]+/) - [""]
-    @measurement = Measurement.new(m_para)
+    @measurement = Measurement.new(correct_parameters_for_mongo)
 
     respond_to do |format|
       if @measurement.save
@@ -44,7 +38,7 @@ class MeasurementsController < ApplicationController
   # PATCH/PUT /measurements/1 or /measurements/1.json
   def update
     respond_to do |format|
-      if @measurement.update(measurement_params)
+      if @measurement.update(correct_parameters_for_mongo)
         format.html { redirect_to @measurement, notice: "Measurement was successfully updated." }
         format.json { render :show, status: :ok, location: @measurement }
       else
@@ -73,4 +67,18 @@ class MeasurementsController < ApplicationController
     def measurement_params
       params.require(:measurement).permit(:data, :user_id, :type, :dt)
     end
+
+    def correct_parameters_for_mongo
+      correct_para = measurement_params
+      correct_para[:user_id] = current_user.id
+      correct_para[:data] = correct_para[:data].split(/[, \n]+/) - [""]
+      correct_para
+    end
+
 end
+
+  # Notes
+    # separated by commas / spaces / newlines 
+      # and remove the "" excess element at the beginning of the array 
+        # -> occurs when we have a few whitespace at the beginning.
+        # m_para[:data] = m_para[:data].split(/[, \n]+/) - [""]
