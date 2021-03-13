@@ -2,21 +2,21 @@
 
 <p>
   <strong>Data:</strong>
-  <%= @measurement.data %>
+  <%= render '/measurements/chart' %>
 </p>
 
 <p>
-  <strong>User:</strong>
+  <strong>User ID:</strong>
   <%= @measurement.user_id %>
 </p>
 
 <p>
-  <strong>Type:</strong>
+  <strong>Kind of signal:</strong>
   <%= @measurement.type %>
 </p>
 
 <p>
-  <strong>Dt:</strong>
+  <strong>Sampling period:</strong>
   <%= @measurement.dt %>
 </p>
 
