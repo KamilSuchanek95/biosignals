@@ -73,7 +73,7 @@ GEM
       responders
       warden (~> 1.2.3)
     erubi (1.10.0)
-    ffi (1.14.2)
+    ffi (1.15.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.8.9)
@@ -102,7 +102,7 @@ GEM
       mongo (>= 2.7.0, < 3.0.0)
     msgpack (1.4.2)
     nio4r (2.5.7)
-    nokogiri (1.11.1)
+    nokogiri (1.11.2)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     orm_adapter (0.5.0)
@@ -150,7 +150,16 @@ GEM
     responders (3.0.1)
       actionpack (>= 5.0)
       railties (>= 5.0)
-    semantic_range (3.0.0)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     spring (2.1.1)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -164,6 +173,10 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.1.0)
     thread_safe (0.3.6)
+    tilt (2.0.10)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (1.2.9)
       thread_safe (~> 0.1)
     warden (1.2.9)
@@ -173,11 +186,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webpacker (6.0.0.pre.2)
-      activesupport (>= 5.2)
+    webpacker (4.3.0)
+      activesupport (>= 4.2)
       rack-proxy (>= 0.6.1)
-      railties (>= 5.2)
-      semantic_range (>= 2.3.0)
+      railties (>= 4.2)
     websocket-driver (0.7.3)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -196,14 +208,16 @@ DEPENDENCIES
   pry
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.5)
+  sass-rails (>= 6)
   spring
   spring-watcher-listen (~> 2.0.0)
+  turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
-  webpacker (~> 6.0.0.pre.2)
+  webpacker (~> 4.0)
 
 RUBY VERSION
    ruby 2.7.0p0
 
 BUNDLED WITH
-   2.1.4
+   2.1.2
