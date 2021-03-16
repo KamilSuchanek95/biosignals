@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
 	resources :measurements
 
+  devise_scope :user do 
+    post 'users/edit' => 'users/registrations#edit'
+  end
+
   Rails.application.routes.draw do
     devise_for :users, controllers: {
       sessions: 'users/sessions'
