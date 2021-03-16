@@ -1,6 +1,3 @@
-
-<!-- Chart code -->
-<script>
 am4core.ready(function() {
 
 // Themes begin
@@ -44,7 +41,3 @@ chart.cursor.xAxis = xvalueAxis;
 chart.scrollbarX = new am4core.Scrollbar();
 
 }); // end am4core.ready()
-</script>
-
-<!-- HTML -->
-<div id="chartdiv"></div>

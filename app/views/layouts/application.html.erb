@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="background: url( <%= asset_path 'black-red-bg.png' %> );background-attachment: fixed;">
+<html class="html-bio">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,31 +9,32 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
-    <!-- Bootstrap CSS -->
+    <!-- Bootstrap JS and CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <!-- Amcharts Scripts -->
     <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/themes/material.js"></script>
     <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
-
+    
+    <!-- Navbar partial -->
     <%= render 'layouts/navbar'%>
-  </head>
-  <br><br>
-  <body style="background: rgba(0, 0, 0, 0);">
+  </head><br><br>
 
-    <% if notice %>
-      <p class="alert alert-light"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-light"><%= alert %></p>
-    <% end %>
+  <body class="body-bio">
+
+    <% if notice %><p class="alert alert-light"><%= notice %></p><% end %>
+    <% if alert %><p class="alert alert-light"><%= alert %></p><% end %>
 
     <div class="container-fluid bg-white rounded">
       <%= yield %>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
   </body>
+  <footer>
+
+  </footer>
 </html>
