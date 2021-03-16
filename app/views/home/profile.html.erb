@@ -1,9 +1,86 @@
 
-<div class="row align-items-center">
-    <div class="col">
-      <h6>Account: <%= current_user.email %></h6>
-    </div>
-    <div class="col">
-      One of three columns
+<div>
+    <div>
+      <h6>Account: <%= current_user.email %></h6><br>
+      <div class="well">
+        <...>
+        <...>
+        <...>
+        <...>
+        <%= button_to 'Edit account', edit_user_registration_path %>
+      </div>
+    </div><br>
+    <!--<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      Show Plot
+    </button>
+    <div class="collapse" id="collapseExample">
+      <div class="well">-->
+        <p> Plot </p>
+        <div id="chartdiv"></div>
+      <!--</div>
+    </div><br>-->
+    <div>
+      <h6>Your records: </h6><br>
+       <div class="well">
+        <% @measurements.each do |measurement| %>
+          <p>
+            <%= link_to 'Plot', home_profile_path(:plot_measurement_id => measurement.id), id: 'plot_element' %>
+            Sampling time: <%= measurement.dt %> | 
+            <%= link_to 'Show', measurement %> |
+            <%= link_to 'Edit', edit_measurement_path(measurement) %> | 
+            <%= link_to 'Delete', home_destroy_path(:measurement_id => measurement.id, :plot_measurement_id => params[:plot_measurement_id]), method: :delete, data: { confirm: 'Are you sure?' } %>
+          </p>
+        <% end %>
+      </div>
     </div>
   </div>
+
+<script>
+//$(document).ready(function(){
+    //$('#plot_element').change(function() {
+      am4core.ready(function() {
+
+      // Themes begin
+      am4core.useTheme(am4themes_material);
+      am4core.useTheme(am4themes_animated);
+      // Themes end
+
+      var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+      var data = [];
+      var amplitiude = <%= @measurement.data.to_json.html_safe %>;
+      var signal_length = amplitiude.length;
+      var dt = <%= @measurement.dt.to_json.html_safe %>;
+      for(var i = 0; i < signal_length; i++){
+        data.push({x:dt * i, y: amplitiude[i]});
+      }
+
+      chart.data = data;
+
+      var xvalueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+      xvalueAxis.renderer.maxGridDistance = 1;
+      xvalueAxis.title.text = 'Time (s)'
+
+      var yvalueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      yvalueAxis.title.text = 'Amplitiude (µV)'
+      yvalueAxis.numberFormatter = new am4core.NumberFormatter();
+      yvalueAxis.numberFormatter.numberFormat = "#,###";
+      // Create series
+      var series = chart.series.push(new am4charts.LineSeries());
+      series.dataFields.valueY = "y";
+      series.dataFields.valueX = "x";
+      series.tooltipText = "{x}"
+
+      series.tooltip.pointerOrientation = "vertical";
+
+      chart.cursor = new am4charts.XYCursor();
+      chart.cursor.snapToSeries = series;
+      chart.cursor.xAxis = xvalueAxis;
+
+      //chart.scrollbarY = new am4core.Scrollbar();
+      chart.scrollbarX = new am4core.Scrollbar();
+
+      }); // end am4core.ready()
+  //  });
+//});
+</script>

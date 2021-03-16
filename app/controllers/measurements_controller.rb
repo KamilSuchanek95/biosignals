@@ -51,10 +51,17 @@ class MeasurementsController < ApplicationController
   # DELETE /measurements/1 or /measurements/1.json
   def destroy
     @measurement.destroy
-    respond_to do |format|
-      format.html { redirect_to measurements_url, notice: "Measurement was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    # unless params[:profile_destroy]
+      respond_to do |format|
+        format.html { redirect_to measurements_url, notice: "Measurement was successfully destroyed." }
+        format.json { head :no_content }
+      end
+    # else
+    #   respond_to do |format|
+    #     format.html { redirect_to home_profile_path, notice: "Measurement was successfully destroyed." }
+    #     format.json { head :no_content }
+    #   end
+    # end
   end
 
   private

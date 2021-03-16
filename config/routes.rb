@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'home/index'
   get 'home/profile'
+  delete 'home/destroy'
 
 	resources :measurements
 
